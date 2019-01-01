@@ -1,0 +1,140 @@
+<!-- 个人中心 -->
+		 <!-- 路径定位条 -->
+<ol class="breadcrumb" style="color:{{themeColor}};">
+	<li><strong>系统设置</strong></li>
+	<li><strong>个人中心</strong></li>
+</ol>
+		  <!-- 内容标题 -->
+<div class="panel panel-default personMain">
+<!-- 这里是数据显示的区域 ，你们把需要显示的数据通过二级路由转到这里显示-->
+		<div id="personInfoContainer">
+			<div class="personalContainer">
+				<div class="personalContainerHeader">
+					<h2 style="float: left; margin: 0;">基本信息</h2>
+					<a href="javascript:void(0)" ng-click="showPersonCenterUpdateModal()">
+						<i class="fa fa-pencil-square-o personIcon" style="color: {{themeColor}};"></i>
+					</a>
+				</div>
+				<div class="personalContainerBody">
+					<div class="posmaBox">
+						<span class="lf1">姓名</span>
+						<div class="inbox">
+							<p>
+								<span ng-bind="user.name"></span>
+							</p>
+						</div>
+					</div>
+					<div class="posmaBox">
+						<span class="lf1">账号</span>
+						<div class="inbox">
+							<p>
+								<span ng-bind="user.username"></span>
+							</p>
+						</div>
+					</div>
+					<div class="posmaBox">
+						<span class="lf1">性别</span>
+						<div class="inbox">
+							<p>
+								<span ng-bind="gender"></span>
+							</p>
+						</div>
+					</div>
+					<div class="posmaBox">
+						<span class="lf1">年龄</span>
+						<div class="inbox">
+							<p>
+								<span ng-bind="user.age"></span>
+							</p>
+						</div>
+					</div>
+					<div class="posmaBox">
+						<span class="lf1">电话</span>
+						<div class="inbox">
+							<p>
+								<span ng-bind="user.mobile"></span>
+							</p>
+						</div>
+					</div>
+					<div class="posmaBox">
+						<span class="lf1">部门</span>
+						<div class="inbox">
+							<p>
+								<span ng-bind="user.section"></span>
+							</p>
+						</div>
+					</div>
+					<div class="posmaBox">
+						<span class="lf1">职位</span>
+						<div class="inbox">
+							<p>
+								<span ng-bind="user.role"></span>
+							</p>
+						</div>
+					</div>
+					<div class="posmaBox">
+						<span class="lf1">地址</span>
+						<div class="inbox">
+							<p>
+								<span ng-bind="user.address"></span>
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="personNoticeContainer">
+			<div class="personalContainer">
+				<div class="personalContainerHeader">
+					<h2 style="float: left; margin: 0;">公告栏</h2>
+					<a href="javascript:void(0)" ui-sref="main.notice">
+						<i class="fa fa-tasks personIcon" style="color: {{themeColor}};"></i>
+					</a>
+				</div>
+				<div class="personalContainerBody">
+					<ul class="list-group">
+					    <li class="list-group-item" style="cursor: default;" ng-repeat="notice in notices|limitTo:6">
+							<small class="pull-right">
+								<i class="fa fa-clock-o"></i><span ng-bind="notice.time"></span>
+							</small>
+							<strong style="display: block;" ng-bind="notice.name"></strong>
+							<small ng-bind="notice.content"></small>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div id="personcalendarContainer">
+			<div class="personalContainer">
+				<div class="personalContainerHeader">
+					<h2 style="float: left; margin: 0;">日历</h2>
+				</div>
+				<div class="personalContainerBody">
+					<div class="calendar-box">
+						<div class="calendar">
+							<div class="header">
+								<a class="prev-month" href="javascript:void(0)"><i class="fa fa-angle-left" style="font-size: 35px;position: absolute;"></i></a>
+								<div class="text month-year" style="font: 300 18px/18px Roboto, sans-serif;line-height: 70px;"></div>
+								<a class="next-month" href="javascript:void(0)"><i class="fa fa-angle-right" style="font-size: 35px;position: absolute;"></i></a>
+							</div>
+							<div class="months" data-flow="left">
+								<div class="month month-a">
+									<div class="render render-a">
+										<div class="calendar_table">
+										</div>
+									</div>
+								</div>
+								<div class="month month-b">
+									<div class="render render-b">
+										<div class="calendar_table">
+											<div class="weeks"></div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+</div>

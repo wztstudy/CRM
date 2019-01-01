@@ -1,0 +1,39 @@
+<div class="modal-header">
+	<button type="button" class="close" aria-label="Close" ng-click="cancel()"><span aria-hidden="true">&times;</span></button>
+	<h4 class="modal-title">修改服务</h4>
+</div>
+<div class="modal-body">
+	<div class="form-group">
+		客户姓名: 
+		<input type="text" ng-model="modifyService.custName" class="form-control" disabled/>
+	</div>
+	<div class="form-group">
+		服务状态: 
+		<select class="form-control" ng-model="modifyService.status">
+			<option >已提交</option>
+			<option >已分配</option>
+			<option >已处理</option>
+		</select>
+	</div>
+	<div class="form-group">
+		服务内容: 
+		<textarea ng-model="modifyService.serviceContent" class="form-control" rows="" cols=""></textarea>
+	</div>
+	<div class="form-group">
+		处理过程: 
+		<textarea ng-model="modifyService.process" class="form-control" rows="" cols=""></textarea>
+	</div>
+	<div class="form-group">
+		处理结果: 
+		<textarea ng-model="modifyService.result" class="form-control" rows="" cols=""></textarea>
+	</div>
+	
+	<div class="form-group">
+		反馈内容: 
+		<textarea ng-model="modifyService.back" class="form-control" rows="" cols=""></textarea>
+	</div>
+</div>
+<div class="modal-footer">
+	<button type="button" class="btn btn-default" ng-click="cancel()">关闭</button>
+	<button type="button" class="btn btn-primary" ng-click="modify()">修改服务</button>
+</div>

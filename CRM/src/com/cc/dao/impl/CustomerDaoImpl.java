@@ -1,0 +1,75 @@
+package com.cc.dao.impl;
+
+import java.util.Date;
+import java.util.List;
+
+import com.cc.dao.CustomerDao;
+import com.cc.model.Customer;
+import com.cc.model.User;
+import com.cc.util.JDBC;
+
+public class CustomerDaoImpl implements CustomerDao {
+   public static void main(String[] args) {
+	   CustomerDaoImpl  cd = new CustomerDaoImpl();
+	   //cd.search("二狗").forEach(a->System.out.println(a));
+	//  int age = cd.getAge("2000-01-01");
+	 // System.out.println("年龄"+age);
+}
+	@Override
+	public List<Customer> search(String custName ,Integer offset, Integer displyCount) {
+		String sql = "select id,sex,userID,name,birthday,mobile,type,credit,satisfy,address,chanceID from Customer where 1=1 ";
+		if(custName != null && !"".equals(custName)) {
+			sql += " and  name LIKE '%"+custName+"%' ";
+		}
+		sql += " ORDER BY chanceID DESC LIMIT "+offset+", "+displyCount;
+		return JDBC.query(sql, Customer.class);
+	}
+
+	@Override
+	public int getAge(String birthday) {
+		String sql = "select timestampdiff(YEAR, '"+birthday+"',now())";
+		return JDBC.getInt(sql);
+	}
+	@Override
+	public int addCustomerData(String name,int userID, int sex, String birthday, String type,String mobile, String address, int credit,
+			int satisfy) {
+		String sql = "SELECT id FROM chance WHERE `customerName`= ?";
+		
+		int chanceID = JDBC.getInt(sql, name);
+		System.out.println(chanceID);
+		System.out.println(sql);
+		if(chanceID < 1) return  -1;
+		 sql = "INSERT INTO customer VALUES(null,?,?,?,?,?,?,?,?,?,?)";
+		return JDBC.update(sql, sex,userID,name,birthday,mobile,type,credit,satisfy,address,chanceID);
+	}
+	@Override
+	public int updateCustomerData(String name, int sex, String birthday, String mobile, String type,
+			String address, int credit, int satisfy,int custID) {
+		String sql = "update customer set sex=?,name=?,birthday=?,mobile=?,type=?,credit=?,satisfy=?,address=? WHERE id = ? ";
+		return JDBC.update( sql, sex,name, birthday, mobile, type, credit,satisfy,address ,custID );
+	 }
+	@Override
+	public int getCount(String custName, Integer offset, Integer displyCount) {
+		String sql = "select count(*) from Customer where 1=1 ";
+		if(custName != null && !"".equals(custName)) {
+			sql += " and  name LIKE '%"+custName+"%' ";
+		}
+		return JDBC.getCount(sql);
+	}
+	@Override
+	public int assignCustomer(String username,String[] custIDs) {
+		String sql = "update customer set UserID=(select user.id from user WHERE user.name = ?) WHERE id = ? ";
+		return JDBC.update(sql,username,custIDs);
+	}
+	@Override
+	public List<Object> getUsers(String uaername) {
+		if(uaername == null || "".equals(uaername.trim()) ) {
+			return null;
+		}
+		//String sql = "select u.id,u.sex,u.name,u.username,s.name from user u,user_role ur,section s where  u.name like '%"+uaername+"%' and u.id=ur.userID and s.id=u.sectionID and ur.roleID=4 limit 0,5 ";
+		String sql = "select u.*,s.name from user u,user_role ur,section s where  u.name like '%"+uaername+"%' and u.id=ur.userID and s.id=u.sectionID and ur.roleID=4 limit 0,5 ";
+		System.out.println(sql);
+		return JDBC.query(sql, User.class);
+	}
+
+}

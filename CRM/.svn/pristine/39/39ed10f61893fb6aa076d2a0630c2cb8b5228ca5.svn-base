@@ -1,0 +1,29 @@
+package com.cc.service.impl;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import com.cc.dao.ServiceDao;
+import com.cc.dao.impl.ServiceDaoImpl;
+import com.cc.model.Server;
+import com.cc.service.ServiceService;
+
+public class ServiceServiceImpl implements ServiceService{
+
+	ServiceDao sd = new ServiceDaoImpl();
+	
+	@Override
+	public Map<String, Object> getServiceInfo(String userName, int offset, int showCount) {
+		List<Server> list = sd.getServiceInfo(userName, offset, showCount);
+		Map<String, Object> map = new HashMap<>();
+		int totalCount = sd.getTotal(userName);
+		int totalPage = totalCount%showCount==0 ? totalCount/showCount : totalCount/showCount + 1;
+		map.put("totalPage", totalPage);
+		map.put("serviceInfo", list);
+		return map;
+	}
+
+	
+}

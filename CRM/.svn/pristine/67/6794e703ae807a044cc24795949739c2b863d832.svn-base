@@ -1,0 +1,12 @@
+package com.cc.dao;
+
+import java.util.List;
+
+import com.cc.model.Server;
+
+public interface ServiceDao {
+
+	List<Server> getServiceInfo(String userName,int offset,int showCount);
+	
+	int getTotal(String userName);
+}

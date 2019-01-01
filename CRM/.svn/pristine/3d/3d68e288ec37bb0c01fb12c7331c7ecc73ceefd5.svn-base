@@ -1,0 +1,33 @@
+package com.cc.dao.impl;
+
+import java.util.List;
+
+import com.cc.dao.MenuDao;
+import com.cc.model.Menu;
+import com.cc.util.JDBC;
+
+public class MenuDaoImpl implements MenuDao {
+
+	@Override
+	public List<Menu> getMenus(int userID) {
+		String sql = "select id,name,url,parentID from menu where parentID is null ";
+		//String sql = "select m.id,m.name,m.url,m.parentID from menu m ,role_menu rm,role r,user_role ur,`user` u where parentID is null AND rm.roleID = r.id AND r.id = ur.roleID AND ur.userID = u.id AND u.id=? ";
+		return JDBC.query(sql, Menu.class);
+	}
+
+	@Override
+	public List<Menu> getChildMenus(int parentID,int userID) {
+		String sql = "select id,name,url,parentID from menu where parentID = "+ parentID;
+		//String sql = "select DISTINCT m.id,m.name,m.url,m.parentID from menu m ,role_menu rm,role r,user_role ur,`user` u where parentID = ? AND rm.roleID = r.id AND r.id = ur.roleID AND ur.userID = u.id AND u.id=? ";
+		
+		return JDBC.query(sql, Menu.class);
+	}
+
+	@Override
+	public List<Menu> menus(int userID) {
+        String sql = "select DISTINCT m.id,m.name,m.url,m.parentID from menu m ,role_menu rm,role r,user_role ur,`user` u where parentID is not null AND rm.roleID = r.id AND r.id = ur.roleID AND ur.userID = u.id AND u.id=? ";
+		return JDBC.query(sql, Menu.class,userID);
+	}
+
+
+}

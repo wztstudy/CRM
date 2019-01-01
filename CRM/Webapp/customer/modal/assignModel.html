@@ -1,0 +1,42 @@
+<meta charset="utf-8" />
+<div class="modal-header">
+    <button type="button" class="close" aria-label="Close" ng-click="close()"><span aria-hidden="true">&times;</span></button>
+    <h4 class="modal-title" ng-bind="title"></h4>
+</div>
+<div class="modal-body">
+        <table class="table  table-hover table-striped">
+						<thead>
+							<tr>
+								<th>编号</th>
+								<th>客户姓名</th>
+								<th>电话</th>
+							</tr>
+						</thead>
+						<tbody>
+							 <tr ng-repeat="c in custs">
+								<td ng-bind="$index+1"></td>
+								<td ng-bind="c.name"></td>
+								<td ng-bind="c.mobile"></td>
+							</tr>
+						</tbody>
+		</table>
+
+ 		<div class="form-group">
+		    <label for="name">分配给代表:</label><span style="color:red;" ng-bind="meg1"></span>
+		    <input type="text" class="form-control" id="name" ng-model="username" ng-change="keyboard()" />
+		    <div class="form-group" ><span ng-bind="u.name"></span> 
+		      <table class="table  table-hover table-striped">
+							 <tr  ng-repeat="u in users" ng-click="chekedUser(u)">
+								<td ng-bind="u.name"></td>
+								<td ng-bind="u.username"></td>
+							</tr>
+		     	</table>
+		     </div>
+		</div> 
+		
+		
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-default" ng-click="close()">关闭</button>
+    <button type="button" class="btn btn-primary" ng-click="confirm()" >确定</button>
+</div>

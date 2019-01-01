@@ -1,0 +1,40 @@
+<meta charset="utf-8" />
+<div class="modal-header">
+    <button type="button" class="close" aria-label="Close" ng-click="close()"><span aria-hidden="true">&times;</span></button>
+    <h4 class="modal-title" ng-bind="title"></h4>
+</div>
+<div class="modal-body">
+	<form>
+		<div class="form-group">
+		    <label for="uname">用户姓名:</label><span style="color:red;" ng-bind="meg1"></span>
+		    <input type="text" class="form-control" id="uname" ng-model="obj.uname" ng-change="checkUser()" />
+		    <table class="table table-hover" >
+		         <tr ng-repeat=" o in users" ng-click="choiceObj(o)"> <td ng-bind="o.name"></td> </tr>
+		    </table>
+		</div>
+		<div class="form-group">
+		    <label for="cname">客户姓名:</label><span style="color:red;" ng-bind="meg2"></span>
+		    <input type="text" class="form-control" id="cname" ng-model="obj.cname"  />
+		</div>
+		<div class="form-group">
+		    <label for="title">议题:</label><span style="color:red;" ng-bind="meg3"></span>
+		    <input type="text" class="form-control" id="title" ng-model="obj.title"  />
+		</div>
+		<div class="form-group">
+		    <label for="content">内容:</label><span style="color:red;" ng-bind="meg4"></span>
+		    <input type="text" class="form-control" id="content" ng-model="obj.content"  />
+		</div>
+		<div class="form-group">
+		    <label for="recordTime">关怀时间:</label><span style="color:red;" ng-bind="meg5"></span>
+		    <input type="datetime" class="form-control" id="recordTime" ng-model="obj.recordTime"  />
+		</div>
+		<div class="form-group">
+		    <label for="remindTime">提醒时间:</label><span style="color:red;" ng-bind="meg6"></span>
+		    <input type="datetime" class="form-control" id="remindTime" ng-model="obj.remindTime"  />
+		</div>
+	</form>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-default" ng-click="close()">关闭</button>
+    <button type="button" class="btn btn-primary" ng-click="confirm()" >保存</button>
+</div>

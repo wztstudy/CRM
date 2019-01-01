@@ -1,0 +1,14 @@
+package com.cc.service;
+
+import java.util.Map;
+
+/**
+ * 服务管理的服务层
+ * @author	王志涛
+ * @date	2018-12-12
+ * @version	1.0
+ */
+public interface ServiceService {
+
+	Map<String, Object> getServiceInfo(String userName,int offset,int showCount);
+}

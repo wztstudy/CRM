@@ -1,0 +1,19 @@
+<div class="modal-header">
+	<button type="button" class="close" aria-label="Close" ng-click="cancel()"><span aria-hidden="true">&times;</span></button>
+	<h4 class="modal-title">添加常见问题</h4>
+</div>
+<div class="modal-body">
+	<div class="form-group">
+		议题: 
+		<input type="text" ng-model="addFaq.title" class="form-control"/>
+	</div>
+	
+	<div class="form-group">
+		内容: 
+		<textarea class="form-control" ng-model="addFaq.content"></textarea>
+	</div>
+</div>
+<div class="modal-footer">
+	<button type="button" class="btn btn-default" ng-click="cancel()">关闭</button>
+	<button type="button" class="btn btn-primary" ng-click="add()">添加问题</button>
+</div>

@@ -1,0 +1,157 @@
+<style>
+	#mainNav ul li:hover{
+		background-color: {{themeColor}};
+		color: white;
+		transition:.4s ease-in-out 0s;
+	}
+	#topbar>li:hover {
+		background-color:  white;
+		color: {{themeColor}};
+		transition:.4s ease-in-out 0s;
+	}
+	#topbar>li:hover>i {
+		background-color:  white;
+		color: {{themeColor}};
+		transition:.4s ease-in-out 0s;
+	}
+	#topbar>li:hover>a {
+		background-color:  white;
+		color: {{themeColor}};
+		transition:.4s ease-in-out 0s;
+	}
+	#childMenu i{
+	  position: absolute;
+          left: 60px;
+          top: 17px;
+	}
+</style>
+	<nav id="top-nav" style="background:{{themeColor}};transition:background .4s ease-in-out 0s;" class="navbar navbar-default">
+		<div class="container-fluid">
+			<!-- 导航的LOGO -->
+			<div class="navbar-header">
+				<a href="main.jsp" class="navbar-brand"><img src="static/img/11.png" /></a>
+			</div>
+
+			<div class="collapse navbar-collapse">
+				<!-- 导航菜单 -->
+		<!-- 	<ul class="nav navbar-nav " id="topbar">
+					<li ng-click="poitMenu(0)" ui-sref="main.marketingPlan"><i class="fa fa-legal"></i> <a>销售管理</a></li>
+					<li ng-click="poitMenu(1)" ui-sref="main.orderIndex"><i class="fa fa-money"></i> <a>订单管理</a></li>
+					<li ng-click="poitMenu(2)" ui-sref="main.newContract"><i class="fa fa-files-o"></i> <a>合同管理</a></li>
+					<li ng-click="poitMenu(3)" ui-sref="main.custResources"><i class="fa fa-user"></i> <a>客户管理</a></li>
+					<li ng-click="poitMenu(4)" ui-sref="main.serviceCheck"><i class="fa fa-male"></i> <a>服务管理</a></li>
+					<li ng-click="poitMenu(5)" ui-sref="main.constitute"><i class="fa fa-bar-chart-o"></i> <a>统计分析</a></li>
+					<li ng-click="poitMenu(6)" ui-sref="main.personCenter"><i class="fa fa-gears"></i> <a>系统设置</a></li>
+				</ul>
+ -->
+                 <ul class="nav navbar-nav " id="topbar">
+					<li ng-repeat="m in menus" ng-click="poitMenu($index)" ui-sref="{{m.url}}"><i class="{{m.fontImag}}"></i> <a ng-bind="m.name"></a></li>
+				</ul>
+				<!-- 个人设置 -->
+
+				<div id="toprightline"></div>
+				<div id="topright">
+					<div id="toprightnav">
+						<span ng-click="help()"><i class="fa fa-question-circle"></i>帮助</span>&nbsp;
+						<span ng-click="about()"><i class="fa fa-exclamation-circle"></i>关于</span>&nbsp;
+						<span ng-click="cancel()"><i class="fa fa-power-off"></i>退出</span>
+
+					</div>
+					<div id="toprightmid">
+						<div id="userbox">
+							<span ng-click="poitMenu(6)" ui-sref="main.personCenter" style="position: relative;left: 20px;">
+								<i class="fa fa-user" style="font-size: 22px;line-height: 27px;"></i>
+							</span>
+							<span ng-click="poitMenu(6)" ui-sref="main.personCenter" style="position: relative;left: 22px;">
+								<font ng-bind="user.name"></font>
+							</span>
+							<span style="position: relative;right: -56px;">
+								<i class="fa fa-bell"></i>
+								<span id="badge" class="badge badge-sm up bg-danger">4</span>
+							</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</nav>
+	
+	<!-- 侧边栏子菜单 font-size: 1.5em; -->
+	<div id="siderbar">
+		<nav class="navbar navbar-default" id="mainNav">
+			 <ul class="nav" id="childMenu" ng-repeat="c in childMenu" >
+			    <li ng-click="goPage()" ><i class="{{c.fontImag}}"></i>  <span ng-bind="c.name"></span></li>
+<!-- 			     <div style="height: 1px; width: 80%; margin-left: 30px; background-color: #f5f5f5;"></div> -->
+	         </ul>
+		</nav>
+	</div>
+
+
+	<div>
+	     <!-- 内容显示 -->
+			<section id="main">
+			 <div ui-view>
+		 <!-- 路径定位条 -->
+			      <ol class="breadcrumb">
+					<li><a href="#">首页</a></li>
+					<li><a href="#">用户管理</a></li>
+					<li class="active">列表展示</li>
+				  </ol>
+		  <!-- 内容标题 -->
+				  <div class="panel panel-default">
+					<div class="panel-heading">
+						<h3 class="panel-title">用户信息</h3>
+					</div>
+					<div class="panel-body">
+						<form action="" class="form-inline pull-left">
+							
+						</form>
+					</div>
+					<!-- 这里是数据显示的区域 ，你们把需要显示的数据通过二级路由转到这里显示-->
+					<table class="table table-bordered table-hover">
+						<thead>
+							<tr>
+								<th>编号</th>
+								<th>区域</th>
+								<th>时间</th>
+								<th>数据</th>
+								<th>信息</th>
+								<th>监测</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>test</td>
+								<td>test</td>
+								<td>test</td>
+								<td>test</td>
+								<td>test</td>
+								<td>test</td>
+								<td>test</td>
+							</tr>
+						</tbody>
+					</table>
+					<div class="panel-footer">
+						<div class="row">
+							<div class="col-md-12">
+								<span class="table-page-tip">第<span>1</span>/<span>10</span>页
+									<ul class="pagination pagination-sm pull-right">
+										<li><a href="javascript:void()" aria-label="Previous"> <span aria-hidden="true">&laquo;</span></a></li>
+										<li><a href="#">1</a></li>
+										<li><a href="#">2</a></li>
+										<li><a href="#">3</a></li>
+										<li><a href="#">4</a></li>
+										<li><a href="#">5</a></li>
+										<li><a href="javascript:void()" aria-label="Next"> <span aria-hidden="true">&raquo;</span></a></li>
+									</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+				  
+					</div>
+			</section>
+		<!--分割线-->
+	
+
+	</div>

@@ -1,0 +1,33 @@
+<meta charset="utf-8" />
+<div class="modal-header">
+    <button type="button" class="close" aria-label="Close" ng-click="close()"><span aria-hidden="true">&times;</span></button>
+    <h4 class="modal-title" ng-bind="title"></h4>
+</div>
+<div class="modal-body">
+	<form>
+		<div class="form-group">
+		    <label for="name">用户姓名:</label><span style="color:red;" ng-bind="meg1"></span>
+		    <input type="text" class="form-control" id="name" ng-model="obj.name"  ng-change="keyboard()" />
+		     <div class="form-group" >
+		      <table class="table  table-hover table-striped">
+							 <tr  ng-repeat="u in users" ng-click="chekedUser(u)">
+								<td ng-bind="u.name"></td>
+								<td ng-bind="u.username"></td>
+							</tr>
+		     	</table>
+		     </div>
+		</div>
+		<div class="form-group">
+		    <label for="planNum">计划数量:</label><span style="color:red;" ng-bind="meg2"></span>
+		    <input type="text" class="form-control" id="planNum" ng-model="obj.planNum"  />
+		</div>
+		<div class="form-group">
+		    <label for="planTime">计划日期:</label><span style="color:red;" ng-bind="meg3"></span>
+		    <input type="date" class="form-control" id="planTime" ng-model="obj.planTime"  />
+		</div>
+	</form>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-default" ng-click="close()">关闭</button>
+    <button type="button" class="btn btn-primary" ng-click="confirm()" >保存</button>
+</div>

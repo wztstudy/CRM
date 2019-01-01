@@ -1,0 +1,58 @@
+package com.cc.Fiter;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.Filter;
+import javax.servlet.FilterChain;
+import javax.servlet.FilterConfig;
+import javax.servlet.ServletException;
+import javax.servlet.ServletRequest;
+import javax.servlet.ServletResponse;
+import javax.servlet.annotation.WebFilter;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.cc.model.User;
+import com.cc.service.MenuService;
+import com.cc.service.impl.MenuServiceImpl;
+
+import net.sf.json.JSONObject;
+
+
+public class LimitFiter implements Filter {
+
+
+
+
+
+	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
+        System.out.println("进来过滤器了");
+      HttpServletRequest req = (HttpServletRequest) request;
+      HttpServletResponse resp =   (HttpServletResponse) response;
+      resp.setCharacterEncoding("utf-8");
+       User user = (User) req.getSession().getAttribute("user");
+       if(user != null) {
+    	   System.out.println(user.getName()+"过滤器");
+    	   PrintWriter pw = response.getWriter();
+	   		JSONObject  json = new JSONObject();
+	   		MenuService  ms = new MenuServiceImpl();
+	   		json.putAll(ms.menus(1));
+	   		pw.print(json);		
+       }else {
+    	 //  req.getRequestDispatcher("index.jsp").forward(request, response);
+    	   
+       }
+     
+		chain.doFilter(request, response);
+	}
+
+
+	public void init(FilterConfig fConfig) throws ServletException {
+		
+	}
+
+	public void destroy() {
+		// TODO Auto-generated method stub
+	}
+}

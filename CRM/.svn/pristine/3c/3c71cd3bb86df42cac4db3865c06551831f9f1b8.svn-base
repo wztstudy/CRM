@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<!-- 路径定位条 -->
+ <ol class="breadcrumb" style="color:{{themeColor}};">
+<li><strong>服务管理</strong></li>
+<li><strong>查看服务</strong></li>
+ </ol>
+<!-- 内容标题 -->
+	<div class="panel panel-default">
+		<div class="panel-body">
+			<div class="col-lg-6" style="width:48%">
+				<div class="input-group">
+					<input type="text" class="form-control" placeholder="用户" ng-model="userName"/>
+					<span class="input-group-btn">
+						<button class="btn btn-default" ng-click="search()" style="color: #7d7d7d" ><i class="fa fa-search"></i>查找</button>
+					</span>
+					<span class="input-group-btn" >
+			        	<button  style="margin-left: 12px;" ng-click="addService()" class="btn btn-default" type="button" ><i class="fa fa-plus"></i>添加</button>
+			      	</span>
+			      	<span class="input-group-btn" >
+			        	<button  style="margin-left: 12px;" ng-click="deleteService()" class="btn btn-default" type="button" ><i class="fa fa-plus"></i>删除</button>
+			      	</span>
+			      	<span class="input-group-btn" >
+			        	<button  style="margin-left: 12px;" ng-click="allotService()" class="btn btn-default" type="button" ><i class="fa fa-plus"></i>分配</button>
+			      	</span>
+				</div>
+			</div>
+			
+		</div>
+		
+		<table class="table table-hover table-striped">
+			<thead style="text-align: center;">
+				<tr>
+					<th width="10%" style="padding-left:48px">
+						<input type="checkbox" ng-model="chooseAll" ng-change="chooseAllData()" />全选
+					</th>
+					<th style="text-align:center" width="10%">编号</th>
+					<th style="text-align:center" width="10%">用户姓名</th>
+					<th style="text-align:center" width="10%">客户姓名</th>
+					<th style="text-align:center" width="10%">服务状态</th>
+					<th style="text-align:center" width="25%">服务内容</th>
+					<th style="text-align:center" width="25%">操作</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="ser in serviceInfo">
+					<td style="text-align:center">
+						<input type="checkbox" ng-model="ser.choose"  ng-change="chooseData(ser)" />
+					</td>
+					<td style="text-align:center" ng-bind="$index+1"></td>
+					<td style="text-align:center" ng-bind="ser.userName"></td>
+					<td style="text-align:center" ng-bind="ser.custName"></td>
+					<td style="text-align:center" ng-bind="ser.value"></td>
+					<td style="text-align:center" ng-bind="ser.serverContent"></td>
+					<td style="text-align:center">
+						<a href="javascript:void(0)" ng-click="modifyService(ser)">修改</a>
+						<a href="javascript:void(0)" ng-click="deleteService(ser.id)">删除</a>
+						<a href="javascript:void(0)" ng-click="allotService(ser.id)">分配</a>
+						<a href="javascript:void(0)" ng-click="serviceDetails(ser)">查看</a>
+					</td>
+				</tr>
+			
+			</tbody>
+		</table>
+		
+		<div class="panel-footer">
+			<div class="row">
+				<div class="col-md-12">
+					<span class="table-page-tip">第</span><span ng-bind="currentPage"></span>/<span ng-bind="totalPage"></span>页
+						<ul class="pagination pagination-sm pull-right" style="width: 240px;">
+							<li><a href="javascript:void(0)" aria-label="first" ng-click="gotoPage(1)"> <span >首页</span></a></li>
+							<li><a href="javascript:void(0)" aria-label="Prev" ng-click="gotoPage(currentPage - 1)"> <span >上一页</span></a></li>
+							<li><a href="javascript:void(0)" aria-label="Next" ng-click="gotoPage(currentPage + 1)"> <span >下一页</span></a></li>
+							<li><a href="javascript:void(0)" aria-label="last" ng-click="gotoPage(totalPage)"> <span >末页</span></a></li>
+						</ul>
+				  </div>
+			</div>
+		</div>
+		
+	</div>
+
+	
+</body>
+</html>

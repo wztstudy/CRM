@@ -1,0 +1,91 @@
+package com.cc.dao.impl;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import com.cc.dao.UserDao;
+import com.cc.model.Notice;
+import com.cc.model.User;
+import com.cc.util.JDBC;
+
+public class UserDaoImpl implements UserDao {
+
+
+	@Override
+	public User getUser(String username, String password) {
+		System.out.println(password);
+		String sql = "SELECT s.`name` section,r.`name` role,u.id,u.username,u.password,u.name,u.mobile,u.sex,u.address,u.age,u.status,u.sectionID,u.lockingTime FROM `user` u,user_role ur,role r,section s WHERE u.username=? AND u.password=(MD5(?)) AND u.sectionID=s.id AND ur.userID=u.id AND ur.roleID=r.id";
+		List<Object> result = JDBC.query(sql, User.class, username, password);
+		if (result.size() == 0) {
+			return null;
+		}
+		return (User)result.get(0);
+	}
+
+	@Override
+	public int updateUserInfo(User user) {
+		String sql = "UPDATE `user` u,section s,user_role ur,role r SET u.mobile=?,u.address=?,u.sectionID=(SELECT id FROM section WHERE `name`=?),ur.roleID=(SELECT id FROM role WHERE `name`=?) WHERE u.sectionID=s.id AND ur.userID=u.id AND ur.roleID=r.id AND u.username=?";
+		Object[] params = {
+				user.getMobile(),
+				user.getAddress(),
+				user.getSection(),
+				user.getRole(),
+				user.getUsername()
+		};
+		return JDBC.update(sql, params);
+	}
+	
+	@Override
+	public List<Notice> getNotices(String content, int offset, int pageCount) {
+		String sql = "SELECT n.id,n.time,n.content,n.userID,u.username,u.`name` FROM notice n,`user` u WHERE n.userID=u.id ";
+		List<String> params = new ArrayList<>();
+		if (content != null && !"".equals(content)) {
+			sql += " AND n.content like ?";
+			params.add("%" + content + "%");
+		}
+		sql += " ORDER BY n.time DESC LIMIT " + offset + "," + pageCount;
+		return JDBC.query(sql, Notice.class, params.toArray());
+	}
+
+	@Override
+	public int getNoticesTotal(String content) {
+		String sql = "SELECT COUNT(*) FROM notice WHERE 1=1 ";
+		List<String> params = new ArrayList<>();
+		if (content != null && !"".equals(content.trim())) {
+			sql += "AND content like ?";
+			params.add("%" + content + "%");
+		}
+		return JDBC.getCount(sql, params.toArray());
+	}
+
+	@Override
+	public int addNotice(Notice addNotice) {
+		String sql = "INSERT INTO notice(id,time,content,userID) VALUES(DEFAULT,NOW(),?,?)";
+		Object[] params = {
+				addNotice.getContent(),
+				addNotice.getUserID()
+		};
+		return JDBC.update(sql, params);
+	}
+
+	@Override
+	public int updateNotice(Notice updateNotice) {
+		String sql = "UPDATE notice SET content=? WHERE id=" + updateNotice.getId();
+		return JDBC.update(sql, updateNotice.getContent());
+	}
+
+	@Override
+	public int deleteNotice(Object[] ids) {
+		String sql = "DELETE FROM notice WHERE id in (";
+		for (int i=1,j=ids.length; i<=j; i++) {
+			if(i == j) {
+				sql += "?";
+			}else {
+				sql += "?,";
+			}
+		}
+		sql += ")";
+		return JDBC.update(sql,ids);
+	}
+
+}

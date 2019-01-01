@@ -1,0 +1,50 @@
+<meta charset="utf-8" />
+<div class="modal-header">
+    <button type="button" class="close" aria-label="Close" ng-click="close()"><span aria-hidden="true">&times;</span></button>
+    <h4 class="modal-title" ng-bind="title"></h4>
+</div>
+<div class="modal-body">
+	<form>
+		<div class="form-group">
+		    <label for="name">姓名:</label><span style="color:red;" ng-bind="meg1"></span>
+		    <input type="text" class="form-control" id="name" ng-model="cust.name"  />
+		</div>
+	     <div class="form-group">
+	     <label for="sex">性别:</label>
+		  <input type="radio" ng-model="cust.sex" ng-checked="cust.sex % 2 != 0 " value="1"  />男
+		  <input type="radio" ng-model="cust.sex" ng-checked="cust.sex % 2 == 0 " value="2" />女
+		   <!--  <label for="sex">性别:</label>
+		    <input type="text" class="form-control" id="sex" ng-model="sex"  /> -->
+		</div> 
+		<div class="form-group">
+		    <label for="birthday">生日:</label><span style="color:red;" ng-bind="meg3"></span>
+		    <input type="text" class="form-control" id="birthday" ng-model="cust.birthday"  />
+		</div>
+		<div class="form-group">
+		    <label for="type">职业:</label>
+		    <input type="text" class="form-control" id="type" ng-model="cust.type"  />
+		</div>
+		<div class="form-group">
+		    <label for="mobile">电话:</label><span style="color:red;"  ng-bind="meg2"></span>
+		    <input type="text" class="form-control" id="mobile" ng-model="cust.mobile"  />
+		</div>
+		<div class="form-group">
+		    <label for="address">地址:</label>
+		    <input type="text" class="form-control" id=""address"" ng-model="cust.address"  />
+		</div>
+		<div class="form-group">
+		    <label for="credit">客户信用度:</label>
+		    <input type="text" class="form-control" id=""credit"" ng-model="cust.credit"  />
+		</div>
+		<div class="form-group">
+		    <label for="satisfy">客户满意度:</label>
+		    <input type="text" class="form-control" id=""satisfy"" ng-model="cust.satisfy"  />
+		</div>
+
+	   
+	</form>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-default" ng-click="close()">关闭</button>
+    <button type="button" class="btn btn-primary" ng-click="confirm()" >保存</button>
+</div>

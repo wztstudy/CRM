@@ -1,0 +1,413 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
+  <display-name>CRM</display-name>
+  
+  <filter>
+  	<filter-name>loginFilter</filter-name>
+  	<filter-class>com.cc.Fiter.LoginFilter</filter-class>
+  	<init-param>
+  		<param-name>excludedPages</param-name>
+  		<param-value>/CRM/login.html</param-value>
+  	</init-param>
+  </filter>
+  <filter-mapping>
+  	<filter-name>loginFilter</filter-name>
+  	<url-pattern>*.html</url-pattern>
+  </filter-mapping>
+  
+  <session-config>  
+    <session-timeout>30</session-timeout>    
+  </session-config>
+  
+  <servlet>
+    <servlet-name>LoginServlet</servlet-name>
+    <servlet-class>com.cc.servlet.LoginServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>LoginServlet</servlet-name>
+    <url-pattern>/login</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>MenuServlet</servlet-name>
+    <servlet-class>com.cc.servlet.MenuServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MenuServlet</servlet-name>
+    <url-pattern>/menu</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>CookieServlet</servlet-name>
+    <servlet-class>com.cc.servlet.CookieServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CookieServlet</servlet-name>
+    <url-pattern>/cookie</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>PersonCenterGetInfoServlet</servlet-name>
+    <servlet-class>com.cc.servlet.PersonCenterGetInfoServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>PersonCenterGetInfoServlet</servlet-name>
+    <url-pattern>/PersonCenterGetInfoServlet</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>CustomerServlet</servlet-name>
+    <servlet-class>com.cc.servlet.CustomerServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CustomerServlet</servlet-name>
+    <url-pattern>/Customer</url-pattern>
+  </servlet-mapping>
+  
+  <filter>
+    <filter-name>EncodingFilter</filter-name>
+    <filter-class>com.cc.Fiter.EncodingFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>EncodingFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+  
+  <servlet>
+    <servlet-name>serviceSearch</servlet-name>
+    <servlet-class>com.cc.servlet.ServiceSearchServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>serviceSearch</servlet-name>
+    <url-pattern>/search</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>CustomerUpdateServlet</servlet-name>
+    <servlet-class>com.cc.servlet.CustomerUpdateServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CustomerUpdateServlet</servlet-name>
+    <url-pattern>/CustomerUpdate</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>PersonCenterInfoUpdateServlet</servlet-name>
+    <servlet-class>com.cc.servlet.PersonCenterInfoUpdateServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>PersonCenterInfoUpdateServlet</servlet-name>
+    <url-pattern>/PersonCenterInfoUpdateServlet</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>CustomerAssignServlet</servlet-name>
+    <servlet-class>com.cc.servlet.CustomerAssignServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CustomerAssignServlet</servlet-name>
+    <url-pattern>/CustomerAssign</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>CustGetUserServlet</servlet-name>
+    <servlet-class>com.cc.servlet.CustGetUserServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CustGetUserServlet</servlet-name>
+    <url-pattern>/CustGetUser</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>CustomerPlanServlet</servlet-name>
+    <servlet-class>com.cc.servlet.CustomerPlanServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CustomerPlanServlet</servlet-name>
+    <url-pattern>/CustomerPlan</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>NoticeSearchServlet</servlet-name>
+    <servlet-class>com.cc.servlet.NoticeSearchServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>NoticeSearchServlet</servlet-name>
+    <url-pattern>/NoticeSearchServlet</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>NoticeAddServlet</servlet-name>
+    <servlet-class>com.cc.servlet.NoticeAddServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>NoticeAddServlet</servlet-name>
+    <url-pattern>/NoticeAddServlet</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>NoticeUpdateServlet</servlet-name>
+    <servlet-class>com.cc.servlet.NoticeUpdateServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>NoticeUpdateServlet</servlet-name>
+    <url-pattern>/NoticeUpdateServlet</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>NoticeDeleteServlet</servlet-name>
+    <servlet-class>com.cc.servlet.NoticeDeleteServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>NoticeDeleteServlet</servlet-name>
+    <url-pattern>/NoticeDeleteServlet</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>CancelServlet</servlet-name>
+    <servlet-class>com.cc.servlet.CancelServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CancelServlet</servlet-name>
+    <url-pattern>/CancelServlet</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>CustomerPlanAdd</servlet-name>
+    <servlet-class>com.cc.servlet.CustomerPlanAdd</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CustomerPlanAdd</servlet-name>
+    <url-pattern>/CustomerPlanAdd</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>CustomerPlanDeleteServlet</servlet-name>
+    <servlet-class>com.cc.servlet.CustomerPlanDeleteServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CustomerPlanDeleteServlet</servlet-name>
+    <url-pattern>/CustomerPlanDelete</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>CustomerDataTransferServlet</servlet-name>
+    <servlet-class>com.cc.servlet.CustomerDataTransferServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CustomerDataTransferServlet</servlet-name>
+    <url-pattern>/CustomerDataTransfer</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>CustCareServlet</servlet-name>
+    <servlet-class>com.cc.servlet.CustCareServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CustCareServlet</servlet-name>
+    <url-pattern>/CustCare</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>addService</servlet-name>
+    <servlet-class>com.cc.servlet.AddServiceServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>addService</servlet-name>
+    <url-pattern>/addService</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>searchServiceBack</servlet-name>
+    <servlet-class>com.cc.servlet.ServiceBackServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>searchServiceBack</servlet-name>
+    <url-pattern>/searchServiceBack</url-pattern>
+  </servlet-mapping>
+ 
+ <servlet>
+    <servlet-name>modifyService</servlet-name>
+    <servlet-class>com.cc.servlet.ModifyServiceServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>modifyService</servlet-name>
+    <url-pattern>/modifyService</url-pattern>
+  </servlet-mapping>
+ 
+ <servlet>
+    <servlet-name>deleteService</servlet-name>
+    <servlet-class>com.cc.servlet.DeleteServiceServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>deleteService</servlet-name>
+    <url-pattern>/deleteService</url-pattern>
+  </servlet-mapping>
+ 
+ <servlet>
+    <servlet-name>serviceSearchUser</servlet-name>
+    <servlet-class>com.cc.servlet.ServiceSearchUserServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>serviceSearchUser</servlet-name>
+    <url-pattern>/searchUser</url-pattern>
+  </servlet-mapping>
+ 
+ <servlet>
+    <servlet-name>allotService</servlet-name>
+    <servlet-class>com.cc.servlet.AllotServiceServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>allotService</servlet-name>
+    <url-pattern>/allotService</url-pattern>
+  </servlet-mapping>
+ 
+ <servlet>
+    <servlet-name>faqSearch</servlet-name>
+    <servlet-class>com.cc.servlet.FaqSearchServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>faqSearch</servlet-name>
+    <url-pattern>/faqSearch</url-pattern>
+  </servlet-mapping>
+ 
+ <servlet>
+    <servlet-name>addFaq</servlet-name>
+    <servlet-class>com.cc.servlet.AddFaqServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>addFaq</servlet-name>
+    <url-pattern>/addFaq</url-pattern>
+  </servlet-mapping>
+ 
+ <servlet>
+    <servlet-name>modifyFaq</servlet-name>
+    <servlet-class>com.cc.servlet.ModifyFaqServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>modifyFaq</servlet-name>
+    <url-pattern>/modifyFaq</url-pattern>
+  </servlet-mapping>
+
+
+  <servlet>
+    <servlet-name>deleteFaq</servlet-name>
+    <servlet-class>com.cc.servlet.DeleteFaqServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>deleteFaq</servlet-name>
+    <url-pattern>/deleteFaq</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>searchProduct</servlet-name>
+    <servlet-class>com.cc.servlet.SearchProductServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>searchProduct</servlet-name>
+    <url-pattern>/searchProduct</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>addOrder</servlet-name>
+    <servlet-class>com.cc.servlet.AddOrderServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>addOrder</servlet-name>
+    <url-pattern>/addOrder</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>searchOrder</servlet-name>
+    <servlet-class>com.cc.servlet.SearchOrderServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>searchOrder</servlet-name>
+    <url-pattern>/searchOrder</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>exportOrderStatistics</servlet-name>
+    <servlet-class>com.cc.servlet.ExportOrderStatistics</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>exportOrderStatistics</servlet-name>
+    <url-pattern>/exportOrderStatistics</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>SectionSearchServlet</servlet-name>
+    <servlet-class>com.cc.servlet.SectionSearchServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SectionSearchServlet</servlet-name>
+    <url-pattern>/SectionSearchServlet</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>SectionAddServlet</servlet-name>
+    <servlet-class>com.cc.servlet.SectionAddServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SectionAddServlet</servlet-name>
+    <url-pattern>/SectionAddServlet</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>SectionUpdateServlet</servlet-name>
+    <servlet-class>com.cc.servlet.SectionUpdateServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SectionUpdateServlet</servlet-name>
+    <url-pattern>/SectionUpdateServlet</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>SectionDeleteServlet</servlet-name>
+    <servlet-class>com.cc.servlet.SectionDeleteServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SectionDeleteServlet</servlet-name>
+    <url-pattern>/SectionDeleteServlet</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>UserSearchServlet</servlet-name>
+    <servlet-class>com.cc.servlet.UserSearchServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UserSearchServlet</servlet-name>
+    <url-pattern>/UserSearchServlet</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>RoleSearchServlet</servlet-name>
+    <servlet-class>com.cc.servlet.RoleSearchServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>RoleSearchServlet</servlet-name>
+    <url-pattern>/RoleSearchServlet</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>UserAddServlet</servlet-name>
+    <servlet-class>com.cc.servlet.UserAddServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UserAddServlet</servlet-name>
+    <url-pattern>/UserAddServlet</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>SaveThemeServlet</servlet-name>
+    <servlet-class>com.cc.servlet.SaveThemeServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SaveThemeServlet</servlet-name>
+    <url-pattern>/SaveThemeServlet</url-pattern>
+  </servlet-mapping>
+  
+  <welcome-file-list>
+    <welcome-file>index.jsp</welcome-file>
+  </welcome-file-list>
+</web-app>

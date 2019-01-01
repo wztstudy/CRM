@@ -1,0 +1,19 @@
+<!-- 个人中心 -->
+		 <!-- 路径定位条 -->
+
+				<ol class="breadcrumb" style="color:{{themeColor}};">
+					<li><strong>订单管理</strong></li>
+					<li><strong>订单统计</strong></li>
+				</ol>
+
+
+		  <!-- 内容标题 -->
+<div class="panel panel-default personMain">
+<!-- 这里是数据显示的区域 ，你们把需要显示的数据通过二级路由转到这里显示-->
+		<div class="loadingBox">
+			<div style="color:{{themeColor}};" class="box1">
+				<h1>Loading....</h1>
+	    		<i class="fa fa-spinner fa-spin fa-2x"></i>
+			</div>
+		</div>
+</div>

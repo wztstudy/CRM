@@ -1,0 +1,34 @@
+<div class="modal-header">
+	<button type="button" class="close" aria-label="Close" ng-click="cancel()"><span aria-hidden="true">&times;</span></button>
+	<h4 class="modal-title">分配服务</h4>
+</div>
+<div class="modal-body">
+	<table class="table table-stripe">
+		<thead>
+			<tr>
+				<th>编号</th>
+				<th>客户姓名</th>
+				<th>服务内容</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="a in allotService">
+				<td ng-bind="$index + 1"></td>
+				<td ng-bind="a.custName"></td>
+				<td ng-bind="a.serverContent"></td>
+			</tr>
+		</tbody>
+	</table>
+	<input class="form-control" placeholder="姓名" ng-model="userName" ng-change="searchUser()"/>
+	<table class="table">
+		<tbody>
+			<tr ng-repeat="u in users">
+				<td ng-bind="u.name" ng-click="chooseValue(u.name)" ng-show="isDisplay"></td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<div class="modal-footer">
+	<button type="button" class="btn btn-default" ng-click="cancel()">关闭</button>
+	<button type="button" class="btn btn-primary" ng-click="allot()">分配服务</button>
+</div>

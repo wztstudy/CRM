@@ -1,0 +1,60 @@
+<meta charset="UTF-8">
+<!-- 内容显示 -->
+
+		 <!-- 路径定位条 -->
+				<ol class="breadcrumb" style="color:{{themeColor}};">
+					<li><strong>客户管理</strong></li>
+					<li><strong>客户价值</strong></li>
+				</ol>
+		
+		  <!-- 内容标题 -->
+				  <div class="panel panel-default">
+					<div class="panel-body">
+							<!-- 输入框 -->
+					  <div class="col-lg-6" style="width:40%">
+						    <div class="input-group">
+						      <input type="text" class="form-control" placeholder="客户姓名" ng-model="custName">
+						      <span class="input-group-btn">
+						        <button class="btn btn-default" type="button" ng-click="searchCust()"><i class="fa fa-search"></i>分析</button>
+						      </span>
+						      <span class="input-group-btn" >
+						        <a href="CustomerDataTransfer" style="margin-left: 12px;" ng-click="exportResult()" class="btn btn-default" type="button"><i class="fa fa-plus"></i>导出分析结果</a>
+						      </span>
+						    </div><!-- /input-group -->
+					  </div><!-- /.col-lg-6 -->
+					</div>
+					<!-- 图表显示 -->
+					       <div id="valueImg" style="width: 100%;height:280px; "></div>
+						<table class="table table-hover">
+					         <tr>
+					             <th>编号</th>
+					             <th>客户姓名</th>
+					             <th>客户信誉度</th>
+					             <th>客户满意度</th>
+					             <th>客户价值</th>
+					         </tr>
+					    		 <tr ng-repeat="c in custData">
+								<td ng-bind="$index+1"></td>
+								<td ng-bind="c.name"></td>
+								<td ng-bind="c.credit"></td>
+								<td ng-bind="c.satisfy"></td>
+								<td ng-bind="(c.satisfy+c.credit)/2"></td>
+							</tr>
+					   </table>
+					<div class="panel-footer">
+					<div class="row">
+							<div class="col-md-12">
+								<span class="table-page-tip">第</span><span ng-bind="currentPage"></span>/<span ng-bind="totalpage"></span>页
+									<ul class="pagination pagination-sm pull-right" style="width: 240px;">
+										<li><a href="javascript:void(0)" ng-click="gotoPage(1)"> <span >首页</span></a></li>
+										<li><a href="javascript:void(0)" ng-click="gotoPage(currentPage-1)"> <span >上一页</span></a></li>
+										<li><a href="javascript:void(0)" ng-click="gotoPage(currentPage+1)"> <span >下一页</span></a></li>
+										<li><a href="javascript:void(0)" ng-click="gotoPage(totalpage)"> <span >末页</span></a></li>
+									</ul>
+							  </div>
+						</div>
+					</div>
+				</div>
+				  
+
+		<!--分割线-->

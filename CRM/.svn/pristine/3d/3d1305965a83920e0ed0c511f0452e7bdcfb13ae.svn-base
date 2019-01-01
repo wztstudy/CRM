@@ -1,0 +1,60 @@
+package com.cc.model;
+/**
+ * 订单表
+ * @author 黄恒愉
+ * 
+ */
+
+import java.util.Date;
+
+public class Order{
+	private  Integer id;
+	private  Integer orderID;
+	private  Date time;
+	private  Integer customerID;
+	private  Double money;
+	private  String remark;
+	public Integer getId() {
+		return id;
+	}
+	public void setId(Integer id) {
+		this.id = id;
+	}
+	public Integer getOrderID() {
+		return orderID;
+	}
+	public void setOrderID(Integer orderID) {
+		this.orderID = orderID;
+	}
+	public Date getTime() {
+		return time;
+	}
+	public void setTime(Date time) {
+		this.time = time;
+	}
+	public Integer getCustomerID() {
+		return customerID;
+	}
+	public void setCustomerID(Integer customerID) {
+		this.customerID = customerID;
+	}
+	public Double getMoney() {
+		return money;
+	}
+	public void setMoney(Double money) {
+		this.money = money;
+	}
+	public String getRemark() {
+		return remark;
+	}
+	public void setRemark(String remark) {
+		this.remark = remark;
+	}
+	@Override
+	public String toString() {
+		return "Order [id=" + id + ", orderID=" + orderID + ", time=" + time + ", customerID=" + customerID + ", money="
+				+ money + ", remark=" + remark + "]";
+	}
+	
+	
+}

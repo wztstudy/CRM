@@ -1,0 +1,8 @@
+package com.cc.service;
+
+import java.util.Map;
+
+public interface MenuService {
+       Map<String, Object> getMenu(int userID);
+       Map<String, Object> menus(int userID);
+}

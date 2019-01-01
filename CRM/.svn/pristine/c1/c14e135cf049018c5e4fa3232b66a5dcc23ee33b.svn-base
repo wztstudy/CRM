@@ -1,0 +1,73 @@
+<meta charset="UTF-8">
+<!-- 内容显示 -->
+
+		 <!-- 路径定位条 -->
+				<ol class="breadcrumb" style="color:{{themeColor}};">
+					<li><strong>系统设置</strong></li>
+					<li><strong>公告管理</strong></li>
+				</ol>
+		
+		  <!-- 内容标题 -->
+				  <div class="panel panel-default">
+				
+					<div class="panel-body">
+					<!-- 输入框 -->
+					  <div class="col-lg-6" style="width:40%">
+						    <div class="input-group">
+						      <input type="text" class="form-control" placeholder="内容查找" ng-model="con.content">
+						      <span class="input-group-btn">
+						        <button class="btn btn-default" type="button" ng-click="searchNotice()" style="color: #7d7d7d" ><i class="fa fa-search"></i>查找</button>
+						      </span>
+						      <span class="input-group-btn" >
+						        <button  style="margin-left: 12px; color: #7d7d7d;" ng-click="showNoticeAddModal()" class="btn btn-default" type="button" ><i class="fa fa-plus"></i>发布</button>
+						      </span>
+						      <span class="input-group-btn" >
+						        <button  style="margin-left: 12px; color: #7d7d7d;" ng-click="deleteCheck()" class="btn btn-default" type="button" ><i class="fa fa-times"></i>删除</button>
+						      </span>
+						    </div>
+					  </div>
+
+					</div>
+					<!-- 这里是数据显示的区域 ，你们把需要显示的数据通过二级路由转到这里显示-->
+					<table class="table table-hover table-striped">
+						<thead>
+							<tr>
+								<th class="th1"><input type="checkbox" ng-model="checkAllFlag" ng-change="checkAll()" style="margin-left: 27px;">全选</th>
+								<th class="th1">编号</th>
+								<th class="th1">公告发起人</th>
+								<th class="th2">公告日期</th>
+								<th class="th2">公告内容</th>
+								<th class="th1">操作</th>
+							</tr>
+						</thead>
+						<tbody>
+							 <tr ng-repeat="notice in notices">
+								<td class="th1"><input type="checkbox" ng-model="notice.checkFlag" ng-change="checkOne(notice)" ></td>
+								<td class="th1" ng-bind="$index+1"></td>
+								<td class="th1" class="th1" ng-bind="notice.name"></td>
+								<td class="th2" ng-bind="notice.time"></td>
+								<td class="th2" ng-bind="notice.content"></td>
+								<td class="th1" >
+									<a href="javascript:void(0)" ng-click="showUpdateNoticeModal(notice)" style="color: #7d7d7d;" >修改</a>
+									<a href="javascript:void(0)" ng-click="deleteOne(notice.id)" style="color: #7d7d7d;" >删除</a>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+					<div class="panel-footer">
+						<div class="row">
+							<div class="col-md-12">
+								<span class="table-page-tip">第</span><span ng-bind="currentPage"></span>/<span ng-bind="totalPage"></span>页
+									<ul class="pagination pagination-sm pull-right" style="width: 240px;">
+										<li><a href="javascript:void(0)" aria-label="first" ng-click="goPage(1)"> <span >首页</span></a></li>
+										<li><a href="javascript:void(0)" aria-label="Prev" ng-click="goPage(currentPage - 1)"> <span >上一页</span></a></li>
+										<li><a href="javascript:void(0)" aria-label="Next" ng-click="goPage(currentPage + 1)"> <span >下一页</span></a></li>
+										<li><a href="javascript:void(0)" aria-label="last" ng-click="goPage(totalPage)"> <span >末页</span></a></li>
+									</ul>
+							  </div>
+						</div>
+					</div>
+				</div>
+				  
+
+		<!--分割线-->

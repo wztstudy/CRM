@@ -1,0 +1,16 @@
+<div class="modal-header">
+    <button type="button" class="close" aria-label="Close" ng-click="close()"><span aria-hidden="true">&times;</span></button>
+    <h4 class="modal-title">修改部门</h4>
+</div>
+<div class="modal-body">
+	<form>
+		<div class="form-group">
+		    <label for="sectionUpdateName">部门名称:</label>
+		    <input type="text" class="form-control" id="sectionUpdateName" ng-model="updateSection.name" />
+		</div>
+	</form>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-default" ng-click="close()">关闭</button>
+    <button type="button" class="btn btn-primary" ng-click="updateOne()">修改</button>
+</div>

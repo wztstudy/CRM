@@ -1,0 +1,76 @@
+<meta charset="UTF-8">
+<!-- 内容显示 -->
+
+		 <!-- 路径定位条 -->
+				<ol class="breadcrumb" style="color:{{themeColor}};">
+					<li><strong>客户管理</strong></li>
+					<li><strong>客户关怀</strong></li>
+				</ol>
+		  <!-- 内容标题 -->
+				  <div class="panel panel-default">
+				
+					<div class="panel-body">
+					<!-- 输入框 -->
+					  <div class="col-lg-6" style="width:40%">
+						    <div class="input-group">
+						      <input type="text" class="form-control" placeholder="用户名" ng-model="username">
+						      <span class="input-group-btn">
+						        <button class="btn btn-default" type="button" ng-click="searchUser()"><i class="fa fa-search"></i>查找</button>
+						      </span>
+						      <span class="input-group-btn" >
+						        <button  style="margin-left: 12px;" ng-click="addCareModel()" class="btn btn-default" type="button"><i class="fa fa-plus"></i>添加</button>
+						      </span>
+						      <span class="input-group-btn">
+						        <button style="margin-left: 12px;" ng-click="deletePlanModel()"  class="btn btn-default" type="button"><i class="fa fa-expand"></i>删除</button>
+						      </span>
+						      
+						    </div><!-- /input-group -->
+					  </div><!-- /.col-lg-6 -->
+
+					</div>
+					<!-- 这里是数据显示的区域 ，你们把需要显示的数据通过二级路由转到这里显示-->
+					<table class="table  table-hover table-striped">
+						<thead>
+							<tr>
+								<th><input type="checkbox" ng-model="selectAll" ng-change="select()">全选</th>
+								<th>编号</th>
+								<th>用户姓名</th>
+								<th>客户姓名</th>
+								<th>议题</th>
+								<th>关怀内容</th>
+								<th>关怀时间</th>
+								<th>提醒时间</th>
+								<th>操作</th>
+							</tr>
+						</thead>
+						<tbody>
+							 <tr ng-repeat="c in plans">
+								<td ><input type="checkbox" ng-model=c.sel ng-change="select(c)" ></td>
+								<td ng-bind="$index+1"></td>
+								<td ng-bind="c.uname"></td>
+								<td ng-bind="c.cname"></td>
+								<td ng-bind="c.title"></td>
+								<td ng-bind="c.content"></td>
+								<td ng-bind="c.cordTime"></td>
+								<td ng-bind="c.remindTime"></td>
+								<td ><a href="javascript:void(0)" ng-click="updateCare(c)" >修改</a>|<a href="javascript:void(0)" ng-click="deleteCare(c)" >删除</a></td>
+							</tr>
+						</tbody>
+					</table>
+					<div class="panel-footer">
+						<div class="row">
+							<div class="col-md-12">
+								<span class="table-page-tip">第</span><span ng-bind="currentPage"></span>/<span ng-bind="totalpage"></span>页
+									<ul class="pagination pagination-sm pull-right" style="width: 240px;">
+										<li><a href="javascript:void(0)" ng-click="gotoPage(1)"> <span >首页</span></a></li>
+										<li><a href="javascript:void(0)" ng-click="gotoPage(currentPage-1)"> <span >上一页</span></a></li>
+										<li><a href="javascript:void(0)" ng-click="gotoPage(currentPage+1)"> <span >下一页</span></a></li>
+										<li><a href="javascript:void(0)" ng-click="gotoPage(totalpage)"> <span >末页</span></a></li>
+									</ul>
+							  </div>
+						</div>
+					</div>
+				</div>
+				  
+
+		<!--分割线-->

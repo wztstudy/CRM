@@ -1,0 +1,26 @@
+<script type="text/javascript" src="static/js/cloud.js" ></script>
+<script type="text/javascript" src="static/js/loginBox.js" ></script>
+<div class="logincontainerbody">
+	<div class="logincontainer">
+		<div id="mainBody">
+	      	<div id="cloud1" class="cloud"></div>
+	      	<div id="cloud2" class="cloud"></div>
+	    </div>
+		<div class="loginbody" >
+		    <div id="loginlogo">    
+		    	<img id="loginImg" src="static/img/loginlogo.png">
+		    </div>  
+		    <div class="loginbox">
+		    	<ul>
+					<li><input  type="text" class="loginuser" ng-model="user.username" /></li>
+					<li><input  type="password" class="loginpwd" ng-model="user.password"  /></li>
+					<li><input name="remember" type="checkbox" ng-model="user.remember" />记住密码<a href="javascript:void(0)">忘记密码?</a> </li>
+					<li><input  type="button" class="btn btn-info" ng-click="login()" style="width:343px;background-color:#1c77ac;" value="登录"   /></li>
+		    	</ul>
+		    </div>
+	    </div>
+	    <div class="loginbm">版权所有 CodeCapital 公司 </div>
+	</div>
+</div>
+
+    

@@ -1,0 +1,33 @@
+<ol class="breadcrumb" style="color:{{themeColor}};">
+	<li><strong>系统设置</strong></li>
+	<li><strong>基础设置</strong></li>
+</ol>
+<!-- 		  内容标题 -->
+<div class="panel panel-default personMain">
+<!-- 这里是数据显示的区域 ，你们把需要显示的数据通过二级路由转到这里显示 -->
+		<div id="themeColorContainer">
+			<div id="themeColor">
+				<div class="posmaBox" style="margin-bottom: 30px;">
+					<span class="lf1">主题颜色</span>
+					<div class="inbox">
+						<div class="getColorBox">
+							<script src="static/js/jscolor.js"></script>
+							<input class="jscolor form-control" ng-model="jscolor" ng-change="setJscolor()" style="background:{{themeColor}};color:white;" />
+						</div>
+						<ul class="toggle">
+							<li><a href="javascript:void(0)" ng-click="setColor('#ff1466')" style="background:#ff1466;"></a></li>
+							<li><a href="javascript:void(0)" ng-click="setColor('#ff8a23')" style="background:#ff8a23;"></a></li>
+							<li><a href="javascript:void(0)" ng-click="setColor('#00b8ec')" style="background:#00b8ec;"></a></li>
+							<li><a href="javascript:void(0)" ng-click="setColor('#23ca89')" style="background:#23ca89;"></a></li>
+							<li><a href="javascript:void(0)" ng-click="setColor('#7a7a7a')" style="background:#7a7a7a;"></a></li>
+						</ul>
+					</div>
+				</div>
+				<div>
+					<input type="button" ng-click="saveTheme()" class="btn" style="color: white;background-color: {{themeColor}}; width:100%;height: 40px;transition:.4s ease-in-out 0s;" value="保存" />
+				</div>
+				<div></div>
+			</div>
+		</div>
+		<div id="systemInfoContainer"></div>
+</div>
